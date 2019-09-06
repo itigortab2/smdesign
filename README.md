@@ -18,3 +18,14 @@ REST API методы:
  b) выбранному параметру и его значению
 Получить детали товара по ID
 Методы принимают JSON на входе и отдают JSON на выходе.
+
+1) Создать товар <br /> 
+curl -X POST -H "Content-Type:application/json" -d '{"name": "", "description": "", "parametres": {...}}' http://localhost:8090/api/add_product
+2) Фильтрация по имени товара <br />
+curl -X GET "http://localhost:8090/api/name_filter/{name}"
+3) Получить весь список товаров <br />
+curl -X GET "http://localhost:8090/api/products"
+4) Получить информацию о продукте по id <br />
+curl -X GET "http://localhost:8090/api/{id}"
+5) Фильтрация по параметру и значению <br />
+curl -X GET "http://localhost:8090/api/params_filter/{key}/{value}"
