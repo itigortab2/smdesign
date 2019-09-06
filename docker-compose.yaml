@@ -10,7 +10,7 @@ services:
    volumes:
    - ./nginx/conf.d:/etc/nginx/conf.d
    depends_on:
-   - app
+     - app
 
   hk-mongodb:
     container_name: hk-mongodb
@@ -24,10 +24,10 @@ services:
     command: mongod --smallfiles --logpath=/dev/null # --quiet
 
   app:
-    build: ./smdesign
-    working_dir: /smdesign
+    build: ./smdesign-app
+    working_dir: /smdesign-app
     volumes:
-      - ./smdesign:/smdesign
+      - ./smdesign-app:/smdesign-app
       - ~/.m2:/root/.m2
     expose:
       - 8080
