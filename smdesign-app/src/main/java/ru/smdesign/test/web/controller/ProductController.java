@@ -39,7 +39,7 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Product> read(@PathVariable("id") String id) {
         Product product = productService.getProduct(id);
         if (product == null) {
