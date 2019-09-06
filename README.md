@@ -24,7 +24,9 @@ curl -X GET "http://localhost/api/name_filter/{name}"
 3) Получить весь список товаров <br />
 curl -X GET "http://localhost/api/"
 4) Получить информацию о продукте по id <br />
-curl -X GET "http://localhost/api/{id}"
+curl -X GET "http://localhost/api/products/{id}"
 5) Фильтрация по параметру и значению <br />
 curl -X GET "http://localhost/api/params_filter/{key}/{value}"
+
+
 
