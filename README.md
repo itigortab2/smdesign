@@ -27,8 +27,8 @@ curl -X GET "http://localhost/api/"
 curl -X GET "http://localhost/api/{id}"
 5) Фильтрация по параметру и значению <br />
 curl -X GET "http://localhost/api/filter_params/{key}/{value}"
-
-1) Для установки необходимо установить docker-compose:
+<br />
+1) Для установки необходимо установить docker-compose:<br />
 sudo apt-get install docker-compose (если система ubuntu)
-2) В корне директории проекта через терминал выполнить команду:
+2) В корне директории проекта через терминал выполнить команду: <br />
 sudo docker-compose up
