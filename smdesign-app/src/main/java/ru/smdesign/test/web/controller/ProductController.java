@@ -51,7 +51,7 @@ public class ProductController {
 
     @GetMapping("/filter_params/{key}/{value}")
     public ResponseEntity<List<Product>> getProductsByParamKeyAndValue(@PathVariable("key") String key,
-                                                       @PathVariable("value") String value) {
+                                                                       @PathVariable("value") String value) {
         return new ResponseEntity<List<Product>>(
                 productService.findByParameterKeyAndValue(key, value), HttpStatus.OK);
     }
