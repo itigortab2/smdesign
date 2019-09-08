@@ -8,9 +8,13 @@ import java.util.Optional;
 public interface ProductService {
 
     public List<Product> findByName(String name);
+
     public Optional<Product> getProduct(String id);
+
     public List<Product> findAll();
+
     public Product addProduct(Product product);
+
     public List<Product> findByParameterKeyAndValue(String key, String value);
 
 }
