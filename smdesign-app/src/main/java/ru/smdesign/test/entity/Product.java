@@ -1,35 +1,38 @@
 package ru.smdesign.test.entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.hibernate.annotations.GenericGenerator;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
-@Document
+@Entity
 public class Product {
 
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    @Indexed
     private String name;
     private String description;
 
-    @Indexed
-    private Map<String, String> parametres = new HashMap<>();
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<Param> parametres = new HashSet<>();
 
-    public Product(String name, String description, Map<String, String> parametres) {
+    public Product(String name, String description, Set<Param> parametres) {
         this.name = name;
         this.description = description;
         this.parametres = parametres;
     }
 
-    public Map<String, String> getParametres() {
+    public Product() {
+    }
+
+    public Set<Param> getParametres() {
         return parametres;
     }
 
-    public void setParametres(Map<String, String> parametres) {
+    public void setParametres(Set<Param> parametres) {
         this.parametres = parametres;
     }
 
@@ -52,5 +55,4 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-
 }

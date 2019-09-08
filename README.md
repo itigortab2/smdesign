@@ -18,7 +18,7 @@ REST API методы:
 Методы принимают JSON на входе и отдают JSON на выходе.
 
 1) Создать товар <br />
-curl -X POST -H "Content-Type:application/json" -d '{"name": "test", "description": "test-descr", "parametres": {"test1": "value1", "test2":"value2"}}' http://localhost:8090/api/add_product
+curl -X POST -H "Content-Type:application/json" -d '{"name": "test", "description": "test-descr", "parametres": [{"key": "value1", "value":"value2"}]}' http://localhost/api/add_product
 2) Фильтрация по имени товара <br />
 curl -X GET "http://localhost/api/filter_name/{name}"
 3) Получить весь список товаров <br />

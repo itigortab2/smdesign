@@ -41,12 +41,11 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> read(@PathVariable("id") String id) {
-        Product product = productService.getProduct(id);
+        Product product = productService.getProduct(id).get();
         if (product == null) {
             return ResponseEntity.notFound().build();
-        } else {
-            return new ResponseEntity<Product>(product, HttpStatus.OK);
         }
+        return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
 
     @GetMapping("/filter_params/{key}/{value}")
@@ -58,7 +57,7 @@ public class ProductController {
 
     @GetMapping("/filter_name/{name}")
     public ResponseEntity<List<Product>> getProductsByName(@PathVariable("name") String name) {
-        return new ResponseEntity<>(productService.findByName(name), HttpStatus.OK);
+        return new ResponseEntity<List<Product>>(productService.findByName(name), HttpStatus.OK);
     }
 
 }
