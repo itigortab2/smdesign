@@ -63,6 +63,15 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
+    public void deleteAll() {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.createNativeQuery("db.Product.remove({})", Product.class).executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    @Override
     public Product saveProduct(Product product) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

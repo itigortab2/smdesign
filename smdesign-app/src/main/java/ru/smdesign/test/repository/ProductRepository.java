@@ -15,4 +15,6 @@ public interface ProductRepository {
     public List<Product> findByName(String name);
 
     public List<Product> findByParameterKeyAndValue(String key, String value);
+
+    public void deleteAll();
 }
