@@ -1,4 +1,4 @@
-package ru.smdesign.test.service;
+package ru.smdesign.test.service.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProductServiceImpl implements ProductService {
+public class ProductRESTRESTServiceImpl implements ProductRESTService {
 
     @Autowired
     ProductRepository productRepository;

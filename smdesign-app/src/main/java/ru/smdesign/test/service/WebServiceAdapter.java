@@ -5,9 +5,8 @@ import ru.smdesign.test.entity.Product;
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductService {
-
-    public List<Product> findByName(String name);
+public interface WebServiceAdapter {
+    public List<Product> findByName(Object request);
 
     public Optional<Product> getProduct(String id);
 
@@ -16,5 +15,4 @@ public interface ProductService {
     public Product addProduct(Product product);
 
     public List<Product> findByParameterKeyAndValue(String key, String value);
-
 }

@@ -6,8 +6,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import ru.smdesign.test.entity.Product;
-import ru.smdesign.test.service.ProductService;
+import ru.smdesign.test.service.rest.ProductRESTService;
 
 import java.net.URI;
 import java.util.List;
@@ -17,16 +18,16 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    ProductService productService;
+    ProductRESTService productRESTService;
 
     @GetMapping("/")
     public ResponseEntity<List<Product>> getAllProducts() {
-        return new ResponseEntity<List<Product>>(productService.findAll(), HttpStatus.OK);
+        return new ResponseEntity<List<Product>>(productRESTService.findAll(), HttpStatus.OK);
     }
 
     @PostMapping("/add_product")
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
-        Product addedProduct = productService.addProduct(product);
+        Product addedProduct = productRESTService.addProduct(product);
         if (addedProduct == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -41,7 +42,7 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> read(@PathVariable("id") String id) {
-        Product product = productService.getProduct(id).get();
+        Product product = productRESTService.getProduct(id).get();
         if (product == null) {
             return ResponseEntity.notFound().build();
         }
@@ -52,12 +53,12 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProductsByParamKeyAndValue(@PathVariable("key") String key,
                                                                        @PathVariable("value") String value) {
         return new ResponseEntity<List<Product>>(
-                productService.findByParameterKeyAndValue(key, value), HttpStatus.OK);
+                productRESTService.findByParameterKeyAndValue(key, value), HttpStatus.OK);
     }
 
     @GetMapping("/filter_name/{name}")
-    public ResponseEntity<List<Product>> getProductsByName(@PathVariable("name") String name) {
-        return new ResponseEntity<List<Product>>(productService.findByName(name), HttpStatus.OK);
+    public ResponseEntity<List<Product>> getProductsByName(@RequestPayload String json) {
+        return new ResponseEntity<List<Product>>(productRESTService.findByName(json), HttpStatus.OK);
     }
 
 }

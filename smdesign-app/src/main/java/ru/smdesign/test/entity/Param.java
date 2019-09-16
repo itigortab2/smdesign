@@ -1,12 +1,23 @@
 package ru.smdesign.test.entity;
 
 import javax.persistence.Embeddable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
 @Embeddable
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "param", propOrder = {
+        "key",
+        "value"
+})
 public class Param {
 
+    @XmlElement(required = true)
     private String key;
+    @XmlElement(required = true)
     private String value;
 
     public Param(String key, String value) {
